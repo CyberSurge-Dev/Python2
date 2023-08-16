@@ -18,7 +18,6 @@ print(" ", my_str, type(my_str))
 print(" ", my_float, type(my_float))
 
 input("\n Press Enter to Continue...")
-
 print_header("2. Operators")
 
 # Set variables
