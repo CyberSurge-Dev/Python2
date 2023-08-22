@@ -1,4 +1,4 @@
-# Zachary Hoover || 8-21-23 || Guided Practice #1
+# Zachary Hoover || 8-21-23 || Independent Practice #1
 
 from ast import While
 
