@@ -52,9 +52,3 @@ def print_teacher_info (teacher_information):
 print_teacher_info(teacher_info)
 
 input("\n Press Enter to Continue...")
-
-
-
-
-
-

@@ -1,8 +1,5 @@
 # Zachary Hoover || 8-21-23 || Independent Practice #1
 
-from ast import While
-
-
 def print_header(title):
     """Prints header with title"""
     print("\n ------+ " + title + " +------\n")
