@@ -1,4 +1,4 @@
-# Zachary Hoover || 8-21-23 || Guided Practice #2
+# Zachary Hoover || 8-22-23 || Guided Practice #2
 
 def print_header(title):
     """Prints header with title"""
