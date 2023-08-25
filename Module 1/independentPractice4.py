@@ -86,9 +86,11 @@ favorite_places = {
 }
 
 # Print people and their favorite places
-for k,v in favorite_places:
+for k in favorite_places.keys():
     print(f"\n  {k}'s favorite places are:")
-    for place in v:
+
+    places = favorite_places[k]
+    for place in places:
         print(f"    {place}")
 
 input("\n Press Enter to Continue...")
@@ -104,9 +106,10 @@ favorite_numbers = {
 }
 
 # Print people and their favorite numbers
-for k,v in favorite_numbers.items():
+for k in favorite_numbers.keys():
     print(f"\n  {k}'s favorite numbers are:")
-    for number in v:
+    numbers = favorite_numbers[k]
+    for number in numbers:
         print(f"    {number}")
 
 input("\n Press Enter to Continue...")
@@ -139,7 +142,7 @@ for city in cities.keys():
     info = cities[city]
 
     # Print details
-    print(f"    Country: {info['country']}")
+    print(f"    Country: {info['country'].title()}")
     print(f"    Population: {info['population']}")
     print(f"    Fun fact: {info['fact']}")
 
