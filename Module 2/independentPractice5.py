@@ -110,3 +110,15 @@ class User:
         print(f"    age: {self.age}")
         print(f"\n    Email: {self.email}")
         print(f"    Password: {self.password}")
+        
+# Create user from class
+user = User("Zachary",
+            "Hoover",
+            "zhoover2891",
+            16,
+            "zhoover2891@cabarrus.k12.nc.us",
+            "1234567890")
+# Call describe_user method to describe user
+user.describe_user()
+        
+input("\n Press Enter to Continue...")
