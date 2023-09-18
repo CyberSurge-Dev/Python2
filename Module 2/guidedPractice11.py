@@ -1,8 +1,5 @@
 # Zachary Hoover || 9-13-23 || Guided Practice #11
 
-from code import interact
-
-
 def print_header(title):
     """Prints header with title."""
     print("\n ------+ " + title + " +------\n")
