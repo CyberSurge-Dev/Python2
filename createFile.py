@@ -17,7 +17,6 @@ if path == "":
 
 shutil.copyfile(template, path)
 
-
 with open(path, 'r') as file :
   filedata = file.read()
 
