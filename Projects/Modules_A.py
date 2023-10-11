@@ -1,4 +1,4 @@
-# Zachary Hoover || 9-21-23 || Independent Practice #15
+# Zachary Hoover || 9-28-23 || Mini Project: Modules (A)
 
 def print_header(title):
     """Prints header with title."""
@@ -9,7 +9,6 @@ def print_header(title):
 import os
 import math
 import time
-import random
 
 # Code to clear the screen before running
 clear = lambda: os.system('clear' if os.name == 'posix' else 'cls')
@@ -33,11 +32,23 @@ questions = {
     "How many Harry Potter books are there?":"7",
     "Which Avenger other than Captain America was able to pick up Thor's Mjolnir in the Marvel movies?":"vision",
     "Who wrote the Twilight books?":"stephenie meyer",
-    "Who holds the record for winning the most Oscars?":"walt disney"
+    "Who holds the record for winning the most Oscars?":"walt disney",
+    "What day do Star Wars fans celebrate 'National Star Wars Day'?":"may 4th",
+    "Who performed at the 2013 Super Bowl XLVII halftime show?":"beyonce",
+    "Kaia Gerber is the daughter of what famous supermodel?":"cidny crawford",
+    "Who directed the 1997 film, Titanic?":"james cameron",
+    "What high school subject did Walter White teach on Breaking Bad?":"chemistry",
+    "What A-list actor reprised his lead role as Maverick in the 2022 Top Gun sequel?":"tom cruise",
+    "How many movies are there in the Halloween film franchise?":"13"
 }
 
 num_questions = len(list(questions.keys()))
 used_questions = [] # List of question that were already asked
+
+# Variable for the ammount the user got correct on the first attempt
+correct = 0
+# List to store incorrect questions
+incorrect = []
 
 for q in range(0, num_questions):
     while True: # Cycle through to choose a random, distinct question
@@ -56,13 +67,34 @@ for q in range(0, num_questions):
             clear()
             print_header("Trivia")
             print("  Correct!\n")
+            # If it's the first attempt, add 1 to correct
+            if attempts < 1:
+                correct += 1
             break
         else:
             clear()
             print_header("Trivia")
             print("  Incorrect!\n")
             attempts += 1
+            if attempts > 2:
+                break
+            # Check if incorrect on first attempt
+            elif attempts < 2:
+                # Append question and answer to list
+                incorrect.append((question, questions[question]))
+            
+            
 
     used_questions.append(question)
+    
+# Clear the screen
+clear()
+print_header("Trivia")
+
+print(f"  Ammount correct (first attempt): {correct}")
+print(f"\n  Incorrect questions:")
+# Print each incorrect question, and the answer
+for q, a in incorrect:
+    print(f"    {q} : {a}")
 
 input("\n Press Enter to Continue...")

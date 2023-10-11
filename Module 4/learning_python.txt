@@ -1,0 +1,6 @@
+Python is an interpreted, general purpose programming language.
+Python is chosen by many because of it's simplicity and use cases.
+Like many other languages, Python is object orriented. 
+Python is easy to learn because of it's simple, word-focues syntax.
+Python contains many built in functions and methods that make it good for quick development. 
+The Python interpreter is written in the C programming language.
