@@ -1,3 +1,5 @@
+from curses import COLOR_BLACK
+from turtle import color
 import pygame
 
 path = __file__[:len(__file__.rpartition('\\')[0])] + '\\'
@@ -11,7 +13,7 @@ label = "down"
 def Capture(display,name,pos,size): # (pygame Surface, String, tuple, tuple)
     img = pygame.Surface(size)  # Create image surface
     img.blit(display,(0,0),(pos,size))  # Blit portion of the display to the image
-    img.set_colorkey()
+    img.set_colorkey(pygame.Color(0, 0, 0))
     pygame.image.save(img, name)  # Save the image to the disk
 
 print(f"\n{sheet_dim[0]/sprite_size[0]}\n")
