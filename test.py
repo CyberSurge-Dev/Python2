@@ -1,4 +1,1 @@
-import math
-
-while True:
-    print(math.floor(math.pi * 4) % 5)
+print(type(4.23123))
