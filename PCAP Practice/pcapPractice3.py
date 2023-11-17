@@ -65,27 +65,28 @@ def search_dictionary(dict, search_term, similar = 65):
     Will return a dictionary of terms that either have the exact
     value searched, are at least given percent similar similar 
     (in letters contained).
+    
+    Checks how similar search term is to each key, only counting uniqe characters,
+    this system is a bit over complicated, but it works decently well if your not sure of the 
+    exact key your looking for.
     """
     
     output = {}
     for key, value in dict.items():
-        # Check if the search term is in the current key
-        key_counts = count_uniqe(key.lower())
-        search_counts = count_uniqe(search_term.lower())
         
+        key_uniqe = list(count_uniqe(key).keys())
         letters_similar = 0
-        for letter in search_counts.keys():
-            if letter in key.lower(): letters_similar += search_counts[letter] / key_counts[letter]
-
-                
+        for letter in count_uniqe(search_term.lower()):
+            # Count the number of similar characters 
+            if letter in key.lower(): letters_similar += 1
 
         if len(search_term) > len(key):
             # Make sure short words don't show up just beause a long word contains it
-            if letters_similar/(len(key)+(len(search_term)-len(key))) >= similar/100:
-                output[key] = (value, letters_similar/(len(key)+(len(search_term)-len(key))))
+            if letters_similar/(len(key_uniqe)+(len(search_term)-len(key_uniqe))) >= similar/100:
+                output[key] = (value, letters_similar/(len(key_uniqe)+(len(search_term)-len(key_uniqe))))
         else:
-            if letters_similar/len(key) >= similar/100:
-                output[key] = (value, letters_similar/len(key))            
+            if letters_similar/len(key_uniqe) >= similar/100:
+                output[key] = (value, letters_similar/len(key_uniqe))            
     return output
             
     
