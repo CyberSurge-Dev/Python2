@@ -11,7 +11,7 @@ path = __file__[:len(__file__.rpartition('\\')[0])] + '\\'
 
 def print_header(title):
     """Prints header with title."""
-    clear()
+    # clear()
     print("\n ------+ " + title + " +------\n")
     return
 
@@ -58,7 +58,7 @@ def split_to_tuple(str):
     """Takes in a string and splits it into a tuple."""
     return tuple([x.strip() for x in str.split(',')])
 
-def search_dictionary(dict, search_term, similar = 85):
+def search_dictionary(dict, search_term, similar = 65):
     """
     takes in a dictionary to search and a search term.
     
@@ -70,13 +70,22 @@ def search_dictionary(dict, search_term, similar = 85):
     output = {}
     for key, value in dict.items():
         # Check if the search term is in the current key
+        key_counts = count_uniqe(key.lower())
+        search_counts = count_uniqe(search_term.lower())
+        
         letters_similar = 0
-        for letter in search_term:
-           if letter in key: letters_similar += 1
-           
-        if letters_similar/len(key) >= similar/100:
-            output[key] = value
-    
+        for letter in search_counts.keys():
+            if letter in key.lower(): letters_similar += search_counts[letter] / key_counts[letter]
+
+                
+
+        if len(search_term) > len(key):
+            # Make sure short words don't show up just beause a long word contains it
+            if letters_similar/(len(key)+(len(search_term)-len(key))) >= similar/100:
+                output[key] = (value, letters_similar/(len(key)+(len(search_term)-len(key))))
+        else:
+            if letters_similar/len(key) >= similar/100:
+                output[key] = (value, letters_similar/len(key))            
     return output
             
     
@@ -188,6 +197,4 @@ while True:
     except KeyboardInterrupt:
         break
     
-
-
 input("\n Press Enter to Continue...")
